@@ -55,19 +55,7 @@ public class GameManager : MonoBehaviour {
     /// </summary>
     public void UpdatePositions()
     {
-        for (int i = 0; i < 4; i++)
-        {
-            Entity EntityAtSpot = spawner.Spots[i + 1].GetComponentInChildren<Entity>();
-            if (EntityAtSpot != null)
-            {
-                EntityAtSpot.SetPosition(spawner.Spots[i].gameObject);
-            }
-        }
-        GameObject NextEntity = EM.GetNextEntity();
-        if (NextEntity != null)
-        {
-            NextEntity.GetComponent<Entity>().SetPosition(spawner.Spots[4]);
-        }
+        StartCoroutine("WaitBeforeWalking");
     }
 
     public void SendToJudgement()
@@ -113,5 +101,24 @@ public class GameManager : MonoBehaviour {
         UpdatePositions();
         IM.SetUnlocked();
         StopCoroutine("WaitForUpdate");
+    }
+
+    IEnumerator WaitBeforeWalking()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            Entity EntityAtSpot = spawner.Spots[i + 1].GetComponentInChildren<Entity>();
+            if (EntityAtSpot != null)
+            {
+                EntityAtSpot.SetPosition(spawner.Spots[i].gameObject);
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
+        GameObject NextEntity = EM.GetNextEntity();
+        if (NextEntity != null)
+        {
+            NextEntity.GetComponent<Entity>().SetPosition(spawner.Spots[4]);
+        }
+        StopCoroutine("WaitBeforeWalking");
     }
 }

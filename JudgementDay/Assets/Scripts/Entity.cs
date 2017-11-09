@@ -22,6 +22,10 @@ public class Entity : MonoBehaviour {
 	/// </summary>
 	public bool isGood;
 
+    private Transform nextPosition;
+
+    private bool Move;
+
 	/// <summary>
 	/// Start this instance.
 	/// </summary>
@@ -32,17 +36,28 @@ public class Entity : MonoBehaviour {
 	/// </summary>
 	void Update() {}
 
-    public void SetPosition(GameObject parent)
+    void FixedUpdate()
     {
-        this.transform.SetParent(parent.transform);
-        this.transform.position = parent.transform.position;
+        if (Move == true)
+        {
+            this.transform.position = Vector2.Lerp(this.transform.position, nextPosition.transform.position, Time.deltaTime);
+        }
     }
 
-	/// <summary>
-	/// Returns a <see cref="System.String"/> that represents the current <see cref="Entity"/>.
-	/// </summary>
-	/// <returns>A <see cref="System.String"/> that represents the current <see cref="Entity"/>.</returns>
-	public string ToString() {
+
+    public void SetPosition(GameObject parent)
+    {
+        Move = true;
+        this.transform.SetParent(parent.transform);
+        nextPosition = parent.transform;
+        //this.transform.position = parent.transform.position;
+    }
+
+    /// <summary>
+    /// Returns a <see cref="System.String"/> that represents the current <see cref="Entity"/>.
+    /// </summary>
+    /// <returns>A <see cref="System.String"/> that represents the current <see cref="Entity"/>.</returns>
+    public string ToString() {
 		return "Type: " + this.Type + ", Item: " + this.Item + ", is " + (this.isGood ? "good" : "evil");
 	}
 }

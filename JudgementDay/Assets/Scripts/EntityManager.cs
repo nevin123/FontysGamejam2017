@@ -27,9 +27,8 @@ public class EntityManager : MonoBehaviour {
 	/// </summary>
 	void Start () {
 		for (int i = 0; i < 10; i++) {
-			GameObject entity = (GameObject)Instantiate (AvailableEntities [Random.Range(0, this.AvailableEntities.Length)]);
-			entity.transform.SetParent (this.EntityContainer.transform);
-			entity.transform.name = entity.transform.name.Split ('(') [0];
+			GameObject entity = (GameObject)Instantiate (AvailableEntities [Random.Range(0, this.AvailableEntities.Length)], EntityContainer);
+            entity.transform.name = entity.transform.name.Split ('(') [0];
 
 			this.entities.Enqueue(entity);
 		}

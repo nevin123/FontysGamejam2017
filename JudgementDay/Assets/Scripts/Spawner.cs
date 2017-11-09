@@ -8,6 +8,8 @@ public class Spawner : MonoBehaviour {
     public GameObject[] Spots;
     public GameObject JudgementSpot;
 
+    private bool wait = false;
+
 	// Use this for initialization
 	void Start () {
         
@@ -20,13 +22,23 @@ public class Spawner : MonoBehaviour {
 
     public void SpawnPeople()
     {
+        StartCoroutine("WaitBeforeWalking");
+    }
+
+    IEnumerator WaitBeforeWalking()
+    {
         for (int i = 0; i < 5; i++)
         {
             Entity nextEntity = EM.GetNextEntity().GetComponent<Entity>();
             if (nextEntity != null)
             {
-                nextEntity.SetPosition(Spots[i]);
+                if (!wait)
+                {
+                    nextEntity.SetPosition(Spots[i]);
+                    yield return new WaitForSeconds(0.5f);
+                }
             }
         }
+        StopCoroutine("WaitBeforeWalking");
     }
 }
