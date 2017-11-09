@@ -32,6 +32,12 @@ public class Entity : MonoBehaviour {
 	/// </summary>
 	void Update() {}
 
+    public void SetPosition(GameObject parent)
+    {
+        this.transform.SetParent(parent.transform);
+        this.transform.position = parent.transform.position;
+    }
+
 	/// <summary>
 	/// Returns a <see cref="System.String"/> that represents the current <see cref="Entity"/>.
 	/// </summary>

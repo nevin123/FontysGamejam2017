@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour {
 
-
+    public EntityManager EM;
     public GameObject[] Spots;
+    public GameObject JudgementSpot;
     public GameObject Entity;
 
 	// Use this for initialization
 	void Start () {
-		foreach(GameObject s in Spots)
+		for(int i = 0; i < 5; i++)
         {
-            Instantiate(Entity, s.transform);
+            EM.GetNextEntity().GetComponent<Entity>().SetPosition(Spots[i]);
         }
 	}
 	
