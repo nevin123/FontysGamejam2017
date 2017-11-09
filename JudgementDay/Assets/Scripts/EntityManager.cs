@@ -10,7 +10,7 @@ public class EntityManager : MonoBehaviour {
 	/// <summary>
 	/// The available entities.
 	/// </summary>
-	public Object[] AvailableEntities;
+	public GameObject[] AvailableEntities;
 
 	/// <summary>
 	/// The entity container.
@@ -20,7 +20,7 @@ public class EntityManager : MonoBehaviour {
 	/// <summary>
 	/// The entities.
 	/// </summary>
-	private Queue<Object> entities = new Queue<Object> (new Object[] { });
+	private Queue<GameObject> entities = new Queue<GameObject> (new GameObject[] { });
 
 	/// <summary>
 	/// Start this instance.

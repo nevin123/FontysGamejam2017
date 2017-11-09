@@ -12,15 +12,25 @@ public class GameManager : MonoBehaviour {
 	/// </summary>
 	public int GoodChoiceScoreIncrease;
 
+    public InputManager IM;
+    /// <summary>
+    /// This has the spots for the entities
+    /// </summary>
+    public Spawner spawner;
+
+    public GameObject HeavenSpot;
+
+    public GameObject HellSpot;
+
+    /// <summary>
+    /// Manages the entities
+    /// </summary>
+    public EntityManager EM;
+
 	/// <summary>
 	/// The bad choice score increase.
 	/// </summary>
 	public int BadChoiceScoreIncrease;
-
-	/// <summary>
-	/// The entity manager.
-	/// </summary>
-	public EntityManager _EntityManager;
 
 	/// <summary>
 	/// The score.
@@ -30,31 +40,77 @@ public class GameManager : MonoBehaviour {
 	/// <summary>
 	/// Start this instance.
 	/// </summary>
-	void Start () {}
+	void Start () {
+        StartCoroutine("WaitForMove");
+    }
 	
 	/// <summary>
 	/// Update this instance.
 	/// </summary>
 	void Update () {}
 
+    /// <summary>
+    /// Update the positions of the enitity on the spots
+    /// </summary>
+    public void UpdatePositions()
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            Entity EntityAtSpot = spawner.Spots[i + 1].GetComponentInChildren<Entity>();
+            if (EntityAtSpot != null)
+            {
+                EntityAtSpot.SetPosition(spawner.Spots[i].gameObject);
+            }
+        }
+        GameObject NextEntity = EM.GetNextEntity();
+        if (NextEntity != null)
+        {
+            NextEntity.GetComponent<Entity>().SetPosition(spawner.Spots[4]);
+        }
+    }
+
+    public void SendToJudgement()
+    {
+        Entity JudgementSpot = spawner.Spots[0].GetComponentInChildren<Entity>();
+        if (JudgementSpot != null)
+        {
+            JudgementSpot.SetPosition(spawner.JudgementSpot.gameObject);
+        }
+        StartCoroutine("WaitForUpdate");
+    }
+
 	/// <summary>
 	/// Sends the next entity to the given place.
 	/// </summary>
 	/// <param name="place">The place to send the entity to.</param>
-	public void SendNextEntityTo(Place place) {
-		GameObject nextEntity = _EntityManager.GetNextEntity ();
-
+	public void SendNextEntityTo(Entity nextEntity, Place place) {
 		if (nextEntity) {
 			switch (place) {
 				case Place.Heaven:
-					Debug.Log ("Sending " + nextEntity.GetComponent<Entity>().name + " to heaven...");
+                    nextEntity.SetPosition(HeavenSpot);
 					break;
 				case Place.Hell:
-					Debug.Log ("Sending " + nextEntity.GetComponent<Entity>().name + " to hell...");
+                    nextEntity.SetPosition(HellSpot);
 					break;
 			}
+            StartCoroutine("WaitForMove");
 		} else {
 			Debug.Log ("No more entities...");
 		}
 	}
+
+    IEnumerator WaitForMove()
+    {
+        yield return new WaitForSeconds(3f);
+        SendToJudgement();
+        StopCoroutine("WaitForMove");
+    }
+
+    IEnumerator WaitForUpdate()
+    {
+        yield return new WaitForSeconds(1f);
+        UpdatePositions();
+        IM.SetUnlocked();
+        StopCoroutine("WaitForUpdate");
+    }
 }
