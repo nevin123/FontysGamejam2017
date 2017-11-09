@@ -248,7 +248,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvailableEntities:
-  - {fileID: 114482393992416198, guid: f983812346353a3409881a6879dc367d, type: 2}
+  - {fileID: 1839518976308318, guid: 5ada7a1d0bf6e8b4f83669b5346d31aa, type: 2}
+  - {fileID: 1791719602374806, guid: f07164e858a83aa4db615f9e07d6fc53, type: 2}
+  - {fileID: 1293014499894046, guid: 83ac38dd19bfc754e9bdce144c90fda0, type: 2}
+  - {fileID: 1772933151001298, guid: f983812346353a3409881a6879dc367d, type: 2}
+  - {fileID: 1604969759074262, guid: b19273c1a53009840ac6508ed03e8338, type: 2}
+  - {fileID: 1975899458041260, guid: 1d3cf26328525214387714279e49ea5f, type: 2}
   EntityContainer: {fileID: 1771467115}
 --- !u!4 &2137443158
 Transform:

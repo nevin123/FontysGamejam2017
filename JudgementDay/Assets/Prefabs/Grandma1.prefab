@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212983918765283546}
   - component: {fileID: 114482393992416198}
   m_Layer: 0
-  m_Name: EntityPrefab
+  m_Name: Grandma1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,6 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   Item: 0
+  isGood: 1
 --- !u!212 &212983918765283546
 SpriteRenderer:
   m_ObjectHideFlags: 1

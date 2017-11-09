@@ -2,27 +2,53 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Entity manager.
+/// </summary>
 public class EntityManager : MonoBehaviour {
 
-	public List<Entity> AvailableEntities = new List<Entity>();
+	/// <summary>
+	/// The available entities.
+	/// </summary>
+	public Object[] AvailableEntities;
 
+	/// <summary>
+	/// The entity container.
+	/// </summary>
 	public Transform EntityContainer;
 
-	private Queue<Entity> entities = new Queue<Entity> (new Entity[] { });
+	/// <summary>
+	/// The entities.
+	/// </summary>
+	private Queue<Object> entities = new Queue<Object> (new Object[] { });
 
-	// Use this for initialization
+	/// <summary>
+	/// Start this instance.
+	/// </summary>
 	void Start () {
 		for (int i = 0; i < 10; i++) {
-			Entity entity = Instantiate (AvailableEntities [0]);
-			entity.Item = ItemType.Knife;
-			entity.Type = EntityType.Biker;
+			GameObject entity = (GameObject)Instantiate (AvailableEntities [Random.Range(0, this.AvailableEntities.Length)]);
 			entity.transform.SetParent (this.EntityContainer.transform);
+			entity.transform.name = entity.transform.name.Split ('(') [0];
 
 			this.entities.Enqueue(entity);
 		}
 	}
 
-	// Update is called once per frame
-	void Update () {
+	/// <summary>
+	/// Update this instance.
+	/// </summary>
+	void Update () {}
+
+	/// <summary>
+	/// Gets the next entity.
+	/// </summary>
+	/// <returns>The next entity.</returns>
+	public GameObject GetNextEntity() {
+		if (this.entities.Count > 0) {
+			return this.entities.Dequeue ();
+		}
+
+		return null;
 	}
 }
