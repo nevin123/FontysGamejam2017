@@ -7,18 +7,26 @@ public class Spawner : MonoBehaviour {
     public EntityManager EM;
     public GameObject[] Spots;
     public GameObject JudgementSpot;
-    public GameObject Entity;
 
 	// Use this for initialization
 	void Start () {
-		for(int i = 0; i < 5; i++)
-        {
-            EM.GetNextEntity().GetComponent<Entity>().SetPosition(Spots[i]);
-        }
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
+
+    public void SpawnPeople()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            Entity nextEntity = EM.GetNextEntity().GetComponent<Entity>();
+            if (nextEntity != null)
+            {
+                nextEntity.SetPosition(Spots[i]);
+            }
+        }
+    }
 }

@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour {
 	/// Start this instance.
 	/// </summary>
 	void Start () {
+        spawner.SpawnPeople();
         StartCoroutine("WaitForMove");
     }
 	
@@ -71,10 +72,10 @@ public class GameManager : MonoBehaviour {
 
     public void SendToJudgement()
     {
-        Entity JudgementSpot = spawner.Spots[0].GetComponentInChildren<Entity>();
-        if (JudgementSpot != null)
+        Entity JudgementPlace = spawner.Spots[0].GetComponentInChildren<Entity>();
+        if (JudgementPlace != null)
         {
-            JudgementSpot.SetPosition(spawner.JudgementSpot.gameObject);
+            JudgementPlace.SetPosition(spawner.JudgementSpot);
         }
         StartCoroutine("WaitForUpdate");
     }

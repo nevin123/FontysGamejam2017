@@ -609,6 +609,7 @@ MonoBehaviour:
   spawner: {fileID: 545574005}
   HeavenSpot: {fileID: 1390052246}
   HellSpot: {fileID: 675773680}
+  JudgementSpot: {fileID: 975064638}
   EM: {fileID: 558751950}
   BadChoiceScoreIncrease: -20
 --- !u!4 &1268797442
