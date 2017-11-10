@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum QuoteType {
-	Happy,
+	GoodHeaven,
+	EvilHeaven,
 	Neutral,
-	Sad
+	GoodHell,
+	EvilHell
 }

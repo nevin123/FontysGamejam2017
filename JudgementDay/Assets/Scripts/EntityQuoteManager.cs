@@ -4,23 +4,27 @@ using UnityEngine;
 
 public class EntityQuoteManager : MonoBehaviour {
 
-	public string[] HappyQuotes;
+	public string[] GoodHeavenQuotes;
+	public string[] EvilHeavenQuotes;
 	public string[] NeutralQuotes;
-	public string[] SadQuotes;
+	public string[] GoodHellQuotes;
+	public string[] EvilHellQuotes;
 
-	private Queue<string> happyQuotes;
-
+	private Queue<string> goodHeavenQuotes;
+	private Queue<string> evilHeavenQuotes;
 	private Queue<string> neutralQuotes;
-
-	private Queue<string> sadQuotes;
+	private Queue<string> goodHellQuotes;
+	private Queue<string> evilHellQuotes;
 
 	/// <summary>
 	/// Start this instance.
 	/// </summary>
 	void Start () {
-		foreach (string quote in HappyQuotes) happyQuotes.Enqueue(quote);
+		foreach (string quote in GoodHeavenQuotes) goodHeavenQuotes.Enqueue(quote);
+		foreach (string quote in EvilHeavenQuotes) evilHeavenQuotes.Enqueue(quote);
 		foreach (string quote in NeutralQuotes) neutralQuotes.Enqueue(quote);
-		foreach (string quote in SadQuotes) sadQuotes.Enqueue(quote);
+		foreach (string quote in GoodHellQuotes) goodHellQuotes.Enqueue(quote);
+		foreach (string quote in EvilHellQuotes) evilHellQuotes.Enqueue(quote);
 	}
 	
 	/// <summary>
@@ -35,12 +39,16 @@ public class EntityQuoteManager : MonoBehaviour {
 	/// <param name="quoteType">Quote type.</param>
 	public string GetQuote(QuoteType quoteType) {
 		switch (quoteType) {
-			case QuoteType.Happy:
-				return getQuote(ref happyQuotes);
+			case QuoteType.GoodHeaven:
+				return getQuote(ref goodHeavenQuotes);
+			case QuoteType.EvilHeaven:
+				return getQuote(ref evilHeavenQuotes);
 			case QuoteType.Neutral:
 				return getQuote(ref neutralQuotes);
-			case QuoteType.Sad:
-				return getQuote(ref sadQuotes);
+			case QuoteType.GoodHell:
+				return getQuote(ref goodHellQuotes);
+			case QuoteType.EvilHell:
+				return getQuote(ref evilHellQuotes);
 		}
 
 		return null;
