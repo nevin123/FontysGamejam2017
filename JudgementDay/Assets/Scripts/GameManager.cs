@@ -94,6 +94,10 @@ public class GameManager : MonoBehaviour {
         {
             JudgementPlace.SetPosition(spawner.JudgementSpot, Place.Purgatory);
         }
+        else
+        {
+            EndGame();
+        }
         StartCoroutine("WaitForUpdate");
     }
 
@@ -187,7 +191,7 @@ public class GameManager : MonoBehaviour {
 	/// Ends the game.
 	/// </summary>
 	public void EndGame() {
-		CM.ZoomTo (stPeter.transform.position.x, stPeter.transform.position.y);
+		CM.ZoomTo (stPeter.transform.position.x, stPeter.transform.position.y + 0.185f);
 
 		if (GetPercentageOfPlace (Place.Heaven) < placePercentageTreshold) {
 			StartCoroutine (switchPlace (Place.Heaven));
@@ -215,7 +219,7 @@ public class GameManager : MonoBehaviour {
 			case Place.Hell:
 				// Flip hell to heaven.
 				HellGroup.SetActive (false);
-				HeavenToHellGroup.SetActive (true);
+				HellToHeavenGroup.SetActive (true);
 				break;
 		}
 	}
