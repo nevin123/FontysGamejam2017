@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 /// <summary>
 /// Entity.
@@ -27,9 +28,9 @@ public class Entity : MonoBehaviour {
 	/// </summary>
 	public TextMesh QuoteText;
 
-    private Transform nextPosition;
+	private Transform nextPosition;
 
-    private bool Move;
+	private Place CurrentPlace;
 
 	/// <summary>
 	/// Start this instance.
@@ -41,11 +42,13 @@ public class Entity : MonoBehaviour {
 	/// </summary>
 	void Update() {}
 
-    void FixedUpdate() {
-        if (Move == true) {
-            this.transform.position = Vector2.Lerp(this.transform.position, nextPosition.transform.position, Time.deltaTime);
-        }
-    }
+	public bool Move;
+
+	void FixedUpdate() {
+		if (Move == true) {
+			this.transform.position = Vector2.Lerp (this.transform.position, nextPosition.transform.position, Time.deltaTime);
+		}
+	}
 
 	/// <summary>
 	/// Sets the quote.
@@ -74,17 +77,38 @@ public class Entity : MonoBehaviour {
 	/// Sets the position.
 	/// </summary>
 	/// <param name="parent">Parent.</param>
-    public void SetPosition(GameObject parent) {
-        Move = true;
-        this.transform.SetParent(parent.transform);
-        nextPosition = parent.transform;
-    }
+	public void SetPosition(GameObject parent, Place currentPlace)
+	{
+		this.transform.SetParent(parent.transform);
+		nextPosition = parent.transform;
+		CurrentPlace = currentPlace;
+		if (currentPlace == Place.Purgatory)
+		{
+			float time = Vector2.Distance(this.transform.position, nextPosition.transform.position) / 0.5f;
+			this.transform.DOMove(nextPosition.transform.position, time);
+		}
+		else if(currentPlace == Place.Heaven)
+		{
+			float time = Vector2.Distance(this.transform.position, nextPosition.transform.position) / 0.3f;
+			this.transform.DOMove(nextPosition.transform.position, time);
+		}
+		else if(currentPlace == Place.Hell)
+		{
+			this.transform.DOShakePosition(1,0.01f,10,90).OnComplete(() => {
+				Debug.Log("complete");
+				float time = Vector2.Distance(this.transform.position, nextPosition.transform.position) / 1.5f;
+				this.transform.DOMove(nextPosition.transform.position, time);
+			});
 
-    /// <summary>
-    /// Returns a <see cref="System.String"/> that represents the current <see cref="Entity"/>.
-    /// </summary>
-    /// <returns>A <see cref="System.String"/> that represents the current <see cref="Entity"/>.</returns>
-    public string ToString() {
+		}
+		//this.transform.position = parent.transform.position;
+	}
+
+	/// <summary>
+	/// Returns a <see cref="System.String"/> that represents the current <see cref="Entity"/>.
+	/// </summary>
+	/// <returns>A <see cref="System.String"/> that represents the current <see cref="Entity"/>.</returns>
+	public string ToString() {
 		return "Type: " + this.Type + ", Item: " + this.Item + ", is " + (this.isGood ? "good" : "evil");
 	}
 }
