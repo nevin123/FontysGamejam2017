@@ -229,6 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2137443158}
   - component: {fileID: 2137443157}
+  - component: {fileID: 2137443159}
   m_Layer: 0
   m_Name: EntityManager
   m_TagString: Untagged
@@ -248,7 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvailableEntities:
-  - {fileID: 1839518976308318, guid: 5ada7a1d0bf6e8b4f83669b5346d31aa, type: 2}
+  - {fileID: 0}
   - {fileID: 1791719602374806, guid: f07164e858a83aa4db615f9e07d6fc53, type: 2}
   - {fileID: 1293014499894046, guid: 83ac38dd19bfc754e9bdce144c90fda0, type: 2}
   - {fileID: 1772933151001298, guid: f983812346353a3409881a6879dc367d, type: 2}
@@ -268,3 +269,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2137443159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2137443156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a31735c1164607e4898b0573d1cd9cde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HappyQuotes: []
+  NeutralQuotes: []
+  SadQuotes: []
