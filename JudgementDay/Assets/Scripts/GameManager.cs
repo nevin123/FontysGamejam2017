@@ -176,6 +176,8 @@ public class GameManager : MonoBehaviour {
 		float totalPeople = list.Count;
 		float suitablePeople = 0;
 
+		if (totalPeople <= 0) return 100.0f;
+
 		foreach (Entity entity in list) {
 			if (entity.isGood == goodPlace) suitablePeople++;
 		}
