@@ -34,6 +34,10 @@ public class StPeter : MonoBehaviour {
 	/// </summary>
 	private Queue<string> goToHellQuotes;
 
+
+
+	public CameraManager CM;
+
 	/// <summary>
 	/// Start this instance.
 	/// </summary>
