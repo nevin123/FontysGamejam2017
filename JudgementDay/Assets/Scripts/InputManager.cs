@@ -8,6 +8,7 @@ public class InputManager : MonoBehaviour {
     public GameManager GM;
     private float Judgement;
     private bool locked = false;
+    public StPeter StPeter;
 
 	// Use this for initialization
 	void Start () {
@@ -27,11 +28,13 @@ public class InputManager : MonoBehaviour {
         if(Judgement == 1)
         {
             GM.SendNextEntityTo(JudgementSpot.GetComponentInChildren<Entity>(), Place.Heaven);
+            StPeter.SetQuote(Place.Heaven);
             locked = true;
         }
         else if(Judgement == -1)
         {
             GM.SendNextEntityTo(JudgementSpot.GetComponentInChildren<Entity>(), Place.Hell);
+            StPeter.SetQuote(Place.Hell);
             locked = true;
         }
 	}
