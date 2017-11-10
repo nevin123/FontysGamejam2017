@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a036b1730e91b7949abb3ffecd73e5c2
-timeCreated: 1510309165
+timeCreated: 1510313098
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -22,7 +22,10 @@ TextureImporter:
     21300030: grandma_15
     21300032: grandma_16
     21300034: grandma_17
-  externalObjects: {}
+    21300036: grandma_18
+    21300038: grandma_19
+    21300040: grandma_20
+    21300042: grandma_21
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -76,7 +79,6 @@ TextureImporter:
   platformSettings:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -85,7 +87,6 @@ TextureImporter:
     overridden: 0
   - buildTarget: Standalone
     maxTextureSize: 2048
-    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -100,7 +101,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 120
+        y: 144
         width: 16
         height: 24
       alignment: 7
@@ -114,7 +115,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 120
+        y: 144
         width: 16
         height: 24
       alignment: 7
@@ -128,7 +129,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 96
+        y: 120
         width: 16
         height: 24
       alignment: 7
@@ -142,7 +143,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 96
+        y: 120
         width: 16
         height: 24
       alignment: 7
@@ -156,7 +157,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 96
+        y: 120
         width: 16
         height: 24
       alignment: 7
@@ -170,7 +171,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 96
+        y: 120
         width: 16
         height: 24
       alignment: 7
@@ -184,7 +185,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 72
+        y: 96
         width: 16
         height: 24
       alignment: 7
@@ -198,7 +199,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 72
+        y: 96
         width: 16
         height: 24
       alignment: 7
@@ -212,7 +213,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
+        y: 72
         width: 16
         height: 24
       alignment: 7
@@ -226,7 +227,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 48
+        y: 72
         width: 16
         height: 24
       alignment: 7
@@ -240,7 +241,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 48
+        y: 72
         width: 16
         height: 24
       alignment: 7
@@ -254,7 +255,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 48
+        y: 72
         width: 16
         height: 24
       alignment: 7
@@ -268,7 +269,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 24
+        y: 48
         width: 16
         height: 24
       alignment: 7
@@ -282,7 +283,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 24
+        y: 48
         width: 16
         height: 24
       alignment: 7
@@ -296,7 +297,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 24
         width: 16
         height: 24
       alignment: 7
@@ -310,7 +311,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 0
+        y: 24
         width: 16
         height: 24
       alignment: 7
@@ -324,7 +325,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
+        y: 24
         width: 16
         height: 24
       alignment: 7
@@ -335,6 +336,62 @@ TextureImporter:
       tessellationDetail: 0
     - serializedVersion: 2
       name: grandma_17
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 24
+        width: 16
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 16
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_19
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_20
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: grandma_21
       rect:
         serializedVersion: 2
         x: 48
