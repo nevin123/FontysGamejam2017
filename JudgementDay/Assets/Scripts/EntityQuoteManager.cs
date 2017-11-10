@@ -10,11 +10,11 @@ public class EntityQuoteManager : MonoBehaviour {
 	public string[] GoodHellQuotes;
 	public string[] EvilHellQuotes;
 
-	private Queue<string> goodHeavenQuotes;
-	private Queue<string> evilHeavenQuotes;
-	private Queue<string> neutralQuotes;
-	private Queue<string> goodHellQuotes;
-	private Queue<string> evilHellQuotes;
+	private Queue<string> goodHeavenQuotes = new Queue<string>();
+	private Queue<string> evilHeavenQuotes = new Queue<string>();
+	private Queue<string> neutralQuotes = new Queue<string>();
+	private Queue<string> goodHellQuotes = new Queue<string>();
+	private Queue<string> evilHellQuotes = new Queue<string>();
 
 	/// <summary>
 	/// Start this instance.

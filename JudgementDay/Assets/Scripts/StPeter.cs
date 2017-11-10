@@ -1,14 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StPeter : MonoBehaviour {
 
-	/// <summary>
-	/// The quote text.
-	/// </summary>
-	public TextMesh QuoteText;
+    /// <summary>
+    /// The quote text.
+    /// </summary>
+    public Text textUI;
 
+    public Canvas canvas;
+
+    public Image image;
+
+    public Sprite[] textBalloons;
 	/// <summary>
 	/// The duration of the quote.
 	/// </summary>
@@ -34,18 +40,16 @@ public class StPeter : MonoBehaviour {
 	/// </summary>
 	private Queue<string> goToHellQuotes = new Queue<string>();
 
-	/// <summary>
-	/// The Camera manager.
-	/// </summary>
-	public CameraManager CM;
 
-	/// <summary>
-	/// Start this instance.
-	/// </summary>
-	void Start () {
-		foreach (string quote in GoToHeavenQuotes) goToHeavenQuotes.Enqueue (quote);
-		foreach (string quote in GoToHellQuotes) goToHellQuotes.Enqueue (quote);
-	}
+    /// <summary>
+    /// Start this instance.
+    /// </summary>
+    void Start()
+    {
+        canvas.enabled = false;
+        foreach (string quote in GoToHeavenQuotes) goToHeavenQuotes.Enqueue(quote);
+        foreach (string quote in GoToHellQuotes) goToHellQuotes.Enqueue(quote);
+    }
 	
 	/// <summary>
 	/// Update this instance.
@@ -63,9 +67,11 @@ public class StPeter : MonoBehaviour {
         {
             case Place.Heaven:
                 quote = getQuote(ref goToHeavenQuotes);
+                image.sprite = textBalloons[0];
                 break;
             case Place.Hell:
                 quote = getQuote(ref goToHellQuotes);
+                image.sprite = textBalloons[1];
                 break;
         }
 
@@ -88,10 +94,10 @@ public class StPeter : MonoBehaviour {
 	/// <param name="quote">Quote.</param>
 	/// <param name="duration">Duration.</param>
 	private IEnumerator setQuote(string quote, float duration) {
-		QuoteText.text = quote;
-
+		textUI.text = quote;
+        canvas.enabled = true;
 		yield return new WaitForSeconds (duration);
-
-		QuoteText.text = "";
+        canvas.enabled = false;
+		textUI.text = "";
 	}
 }
