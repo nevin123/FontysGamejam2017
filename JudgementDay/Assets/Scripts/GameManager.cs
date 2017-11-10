@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour {
 	/// </summary>
 	private int score = 0;
 
+	private List<Entity> EntitiesInHeaven = new List<Entity>();
+	private List<Entity> EntitiesInHell = new List<Entity>();
+
 	/// <summary>
 	/// Start this instance.
 	/// </summary>
@@ -76,10 +79,12 @@ public class GameManager : MonoBehaviour {
 		if (nextEntity) {
 			switch (place) {
 				case Place.Heaven:
-                    nextEntity.SetPosition(HeavenSpot, Place.Heaven);
+					nextEntity.SetPosition(HeavenSpot, Place.Heaven);
+					EntitiesInHeaven.Add (nextEntity);
 					break;
 				case Place.Hell:
-                    nextEntity.SetPosition(HellSpot, Place.Hell);
+					nextEntity.SetPosition(HellSpot, Place.Hell);
+					EntitiesInHell.Add (nextEntity);
 					break;
 			}
             StartCoroutine("WaitForMove");
@@ -121,4 +126,36 @@ public class GameManager : MonoBehaviour {
         }
         StopCoroutine("WaitBeforeWalking");
     }
+
+	/// <summary>
+	/// Gets the percentage of suitable people in the given place.
+	/// </summary>
+	/// <returns>The percentage suitable people of place.</returns>
+	/// <param name="place">Place.</param>
+	public float GetPercentageOfPlace(Place place) {
+		List<Entity> list = null;
+		bool goodPlace = true;
+
+		switch (place) {
+			case Place.Heaven:
+				list = EntitiesInHeaven;
+				goodPlace = true;
+				break;
+			case Place.Hell:
+				list = EntitiesInHell;
+				goodPlace = false;
+				break;
+		}
+
+		if (!list) return;
+
+		float totalPeople = list.Count;
+		float suitablePeople = 0;
+
+		foreach (Entity entity in list) {
+			if (entity.isGood == goodPlace) suitablePeople++;
+		}
+
+		return (float)((suitablePeople / totalPeople) * 100.0f);
+	}
 }
