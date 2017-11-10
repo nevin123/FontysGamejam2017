@@ -94,10 +94,6 @@ public class GameManager : MonoBehaviour {
         {
             JudgementPlace.SetPosition(spawner.JudgementSpot, Place.Purgatory);
         }
-        else
-        {
-            EndGame();
-        }
         StartCoroutine("WaitForUpdate");
     }
 
@@ -180,8 +176,6 @@ public class GameManager : MonoBehaviour {
 		float totalPeople = list.Count;
 		float suitablePeople = 0;
 
-		if (totalPeople <= 0) return 100.0f;
-
 		foreach (Entity entity in list) {
 			if (entity.isGood == goodPlace) suitablePeople++;
 		}
@@ -193,7 +187,7 @@ public class GameManager : MonoBehaviour {
 	/// Ends the game.
 	/// </summary>
 	public void EndGame() {
-		CM.ZoomTo (stPeter.transform.position.x, stPeter.transform.position.y + 0.185f);
+		CM.ZoomTo (stPeter.transform.position.x, stPeter.transform.position.y);
 
 		if (GetPercentageOfPlace (Place.Heaven) < placePercentageTreshold) {
 			StartCoroutine (switchPlace (Place.Heaven));
@@ -202,15 +196,7 @@ public class GameManager : MonoBehaviour {
 		if (GetPercentageOfPlace (Place.Hell) < placePercentageTreshold) {
 			StartCoroutine (switchPlace (Place.Hell));
 		}
-
-        Invoke("BackToTitle", 10);
 	}
-
-    private void BackToTitle()
-    {
-        Application.LoadLevel(0);
-    }
-
 
 	/// <summary>
 	/// Switchs the place.
@@ -229,7 +215,7 @@ public class GameManager : MonoBehaviour {
 			case Place.Hell:
 				// Flip hell to heaven.
 				HellGroup.SetActive (false);
-				HellToHeavenGroup.SetActive (true);
+				HeavenToHellGroup.SetActive (true);
 				break;
 		}
 	}

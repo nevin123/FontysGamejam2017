@@ -14,8 +14,6 @@ public class EntityManager : MonoBehaviour {
 
     public EntityQuoteManager EMQ;
 
-    public int ammount;
-
     /// <summary>
     /// The entity container.
     /// </summary>
@@ -33,7 +31,7 @@ public class EntityManager : MonoBehaviour {
 	/// </summary>
 	void Start () {
         EMQ = GetComponent<EntityQuoteManager>();
-		for (int i = 0; i < ammount; i++) {
+		for (int i = 0; i < 10; i++) {
 			GameObject entity = (GameObject)Instantiate (AvailableEntities [Random.Range(0, this.AvailableEntities.Length)], EntityContainer);
             entity.transform.name = entity.transform.name.Split ('(') [0];
 			this.entities.Enqueue(entity);

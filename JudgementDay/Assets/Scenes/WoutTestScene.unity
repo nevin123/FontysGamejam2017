@@ -155,11 +155,6 @@ Transform:
   m_Father: {fileID: 2021722224}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &260040676 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1028452997840958, guid: 8da4a9095afb1ea49a1a3bbee1e750ae,
-    type: 2}
-  m_PrefabInternal: {fileID: 2019050075}
 --- !u!1001 &263900228
 Prefab:
   m_ObjectHideFlags: 0
@@ -426,7 +421,6 @@ GameObject:
   - component: {fileID: 511665006}
   - component: {fileID: 511665005}
   - component: {fileID: 511665008}
-  - component: {fileID: 511665009}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -508,20 +502,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 3cd7f34eb2110a14cbf674f2e5a2d279, type: 2}
---- !u!114 &511665009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 511665003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bc8b4df61cb4b9478ff13fe13cbbf5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ZoomDuration: 1
-  WaitDuration: 2
-  ZoomSize: 0.1
 --- !u!1 &545574004
 GameObject:
   m_ObjectHideFlags: 0
@@ -626,7 +606,6 @@ MonoBehaviour:
   - {fileID: 1839518976308318, guid: 722d96432c9bfd1458ded7f2c0b434ca, type: 2}
   - {fileID: 1259881211252428, guid: 5ec23942474c09c46b3a0e9d8bb909a4, type: 2}
   EMQ: {fileID: 0}
-  ammount: 9
   EntityContainer: {fileID: 721203198}
   EntityList: []
 --- !u!114 &558751951
@@ -660,11 +639,6 @@ MonoBehaviour:
   - This is nothing special
   - I got what i deserved
   - Just make the best of it
---- !u!1 &591284393 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1814730341373482, guid: 7b87cb9f5b436964f8b27219410bad18,
-    type: 2}
-  m_PrefabInternal: {fileID: 1752294260}
 --- !u!1001 &646330555
 Prefab:
   m_ObjectHideFlags: 0
@@ -703,16 +677,6 @@ Prefab:
     - target: {fileID: 4040719382223872, guid: bbf6d07dd1ee7284691376b9159ecdac, type: 2}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 82785565687034840, guid: bbf6d07dd1ee7284691376b9159ecdac,
-        type: 2}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 82565047457953524, guid: bbf6d07dd1ee7284691376b9159ecdac,
-        type: 2}
-      propertyPath: m_Volume
-      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bbf6d07dd1ee7284691376b9159ecdac, type: 2}
@@ -850,11 +814,6 @@ Transform:
   m_Father: {fileID: 1677837788}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1066978863 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1039689144301968, guid: acb1e17cc19e6144c8b56c2db649e381,
-    type: 2}
-  m_PrefabInternal: {fileID: 263900228}
 --- !u!1 &1222960355
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,16 +874,11 @@ MonoBehaviour:
   spawner: {fileID: 545574005}
   HeavenSpot: {fileID: 1390052246}
   HellSpot: {fileID: 675773680}
-  placePercentageTreshold: 50
+  placePercentageTreshold: 0
   EM: {fileID: 558751950}
   BadChoiceScoreIncrease: -20
-  HeavenGroup: {fileID: 591284393}
-  HeavenToHellGroup: {fileID: 1579225621}
-  HellGroup: {fileID: 260040676}
-  HellToHeavenGroup: {fileID: 1066978863}
-  SwitchPlaceDelay: 1
-  CM: {fileID: 511665009}
-  stPeter: {fileID: 331905312}
+  CM: {fileID: 0}
+  stPeter: {fileID: 0}
 --- !u!4 &1268797442
 Transform:
   m_ObjectHideFlags: 0
@@ -1228,11 +1182,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1 &1579225621 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1187821623876150, guid: 69893c03dcb941d479419545a599767f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1995958176}
 --- !u!1001 &1628441923
 Prefab:
   m_ObjectHideFlags: 0
@@ -1918,16 +1867,6 @@ Prefab:
     - target: {fileID: 1028452997840958, guid: 8da4a9095afb1ea49a1a3bbee1e750ae, type: 2}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 212569966554620344, guid: 8da4a9095afb1ea49a1a3bbee1e750ae,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 212117550606303524, guid: 8da4a9095afb1ea49a1a3bbee1e750ae,
-        type: 2}
-      propertyPath: m_SortingOrder
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8da4a9095afb1ea49a1a3bbee1e750ae, type: 2}
