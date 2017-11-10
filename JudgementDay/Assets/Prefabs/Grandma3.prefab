@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4548819708185914}
   - component: {fileID: 212726333334215596}
   - component: {fileID: 114807450985793814}
+  - component: {fileID: 95983220697185260}
   m_Layer: 0
   m_Name: Grandma3
   m_TagString: Untagged
@@ -66,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 1975899458041260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 0.06, y: 0.06, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 4478507732653986}
   m_Father: {fileID: 0}
@@ -106,6 +107,23 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &95983220697185260
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975899458041260}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 41e3e2778a2ef7a41b042638ecab4928, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!102 &102274402808430344
 TextMesh:
   serializedVersion: 3
@@ -142,7 +160,6 @@ MonoBehaviour:
   Item: 2
   isGood: 0
   QuoteText: {fileID: 102274402808430344}
-  Move: 0
 --- !u!212 &212726333334215596
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -177,7 +194,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300004, guid: 1b380146f1dd50046b323d2992f34209, type: 3}
+  m_Sprite: {fileID: 21300024, guid: a036b1730e91b7949abb3ffecd73e5c2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
