@@ -24,18 +24,20 @@ public class InputManager : MonoBehaviour {
         if (locked) return;
 
         Judgement = Input.GetAxis("Judgement");
-        
-        if(Judgement == 1)
+        if (JudgementSpot.GetComponentInChildren<Entity>() != null)
         {
-            GM.SendNextEntityTo(JudgementSpot.GetComponentInChildren<Entity>(), Place.Heaven);
-            StPeter.SetQuote(Place.Heaven);
-            locked = true;
-        }
-        else if(Judgement == -1)
-        {
-            GM.SendNextEntityTo(JudgementSpot.GetComponentInChildren<Entity>(), Place.Hell);
-            StPeter.SetQuote(Place.Hell);
-            locked = true;
+            if (Judgement == 1)
+            {
+                GM.SendNextEntityTo(JudgementSpot.GetComponentInChildren<Entity>(), Place.Heaven);
+                StPeter.SetQuote(Place.Heaven);
+                locked = true;
+            }
+            else if (Judgement == -1)
+            {
+                GM.SendNextEntityTo(JudgementSpot.GetComponentInChildren<Entity>(), Place.Hell);
+                StPeter.SetQuote(Place.Hell);
+                locked = true;
+            }
         }
 	}
 }

@@ -112,9 +112,11 @@ public class Entity : MonoBehaviour {
             time = Vector2.Distance(new Vector2(this.transform.position.x, 0), nextLocation) / 0.5f;
         }else if(!isGood && CurrentPlace == Place.Heaven){
             time = Vector2.Distance(new Vector2(this.transform.position.x, 0), nextLocation) / 0.2f;
+            An.SetBool("openKnife", true);
         }
         else if(!isGood && CurrentPlace == Place.Hell){
             time = Vector2.Distance(new Vector2(this.transform.position.x, 0), nextLocation) / 0.2f;
+            An.SetBool("openKnife", true);
         }
         this.transform.DOMoveX(nextLocation.x, time).SetEase(Ease.Linear).OnComplete(() => { MoveInHeavenOrHell(); });
     }

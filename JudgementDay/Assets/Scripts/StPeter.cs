@@ -40,14 +40,16 @@ public class StPeter : MonoBehaviour {
 	/// </summary>
 	private Queue<string> goToHellQuotes = new Queue<string>();
 
+
     /// <summary>
     /// Start this instance.
     /// </summary>
-    void Start () {
+    void Start()
+    {
         canvas.enabled = false;
-		foreach (string quote in GoToHeavenQuotes) goToHeavenQuotes.Enqueue (quote);
-		foreach (string quote in GoToHellQuotes) goToHellQuotes.Enqueue (quote);
-	}
+        foreach (string quote in GoToHeavenQuotes) goToHeavenQuotes.Enqueue(quote);
+        foreach (string quote in GoToHellQuotes) goToHellQuotes.Enqueue(quote);
+    }
 	
 	/// <summary>
 	/// Update this instance.
