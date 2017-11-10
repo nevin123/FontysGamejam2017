@@ -56,7 +56,7 @@ public class Entity : MonoBehaviour {
 	/// <param name="quote">Quote.</param>
 	/// <param name="duration">Duration.</param>
 	public void SetQuote(string quote, float duration) {
-		setQuote (quote, duration);
+		StartCoroutine(setQuote (quote, duration));
 	}
 
 	/// <summary>
@@ -65,7 +65,7 @@ public class Entity : MonoBehaviour {
 	/// <returns>The quote.</returns>
 	/// <param name="quote">Quote.</param>
 	/// <param name="duration">Duration.</param>
-	private IEnumerable setQuote(string quote, float duration) {
+	private IEnumerator setQuote(string quote, float duration) {
 		QuoteText.text = quote;
 
 		yield return new WaitForSeconds(duration);
