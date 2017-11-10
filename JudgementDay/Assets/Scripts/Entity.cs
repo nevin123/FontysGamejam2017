@@ -22,6 +22,11 @@ public class Entity : MonoBehaviour {
 	/// </summary>
 	public bool isGood;
 
+	/// <summary>
+	/// The text.
+	/// </summary>
+	public TextMesh QuoteText;
+
     private Transform nextPosition;
 
     private bool Move;
@@ -36,21 +41,43 @@ public class Entity : MonoBehaviour {
 	/// </summary>
 	void Update() {}
 
-    void FixedUpdate()
-    {
-        if (Move == true)
-        {
+    void FixedUpdate() {
+        if (Move == true) {
             this.transform.position = Vector2.Lerp(this.transform.position, nextPosition.transform.position, Time.deltaTime);
         }
     }
 
+	/// <summary>
+	/// Sets the quote.
+	/// </summary>
+	/// <param name="quote">Quote.</param>
+	/// <param name="duration">Duration.</param>
+	public void SetQuote(string quote, float duration) {
+		setQuote (quote, duration);
+	}
 
-    public void SetPosition(GameObject parent)
-    {
+	/// <summary>
+	/// Sets the quote.
+	/// </summary>
+	/// <returns>The quote.</returns>
+	/// <param name="quote">Quote.</param>
+	/// <param name="duration">Duration.</param>
+	private IEnumerable setQuote(string quote, float duration) {
+		QuoteText.text = quote;
+
+		yield return new WaitForSeconds(duration);
+
+		QuoteText.text = "";
+	}
+
+	/// <summary>
+	/// Sets the position.
+	/// </summary>
+	/// <param name="parent">Parent.</param>
+    public void SetPosition(GameObject parent) {
         Move = true;
         this.transform.SetParent(parent.transform);
         nextPosition = parent.transform;
-        //this.transform.position = parent.transform.position;
     }
 
     /// <summary>
