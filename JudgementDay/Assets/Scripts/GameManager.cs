@@ -37,6 +37,17 @@ public class GameManager : MonoBehaviour {
 	/// </summary>
 	public int BadChoiceScoreIncrease;
 
+	public GameObject HeavenGroup;
+	public GameObject HeavenToHellGroup;
+
+	public GameObject HellGroup;
+	public GameObject HellToHeavenGroup;
+
+	/// <summary>
+	/// The switch place delay.
+	/// </summary>
+	public float SwitchPlaceDelay;
+
 	/// <summary>
 	/// The score.
 	/// </summary>
@@ -179,11 +190,33 @@ public class GameManager : MonoBehaviour {
 		CM.ZoomTo (stPeter.transform.position.x, stPeter.transform.position.y);
 
 		if (GetPercentageOfPlace (Place.Heaven) < placePercentageTreshold) {
-			// TODO: flip heaven to hell.
+			StartCoroutine (switchPlace (Place.Heaven));
 		}
 	
 		if (GetPercentageOfPlace (Place.Hell) < placePercentageTreshold) {
-			// TODO: flip hell to heaven.
+			StartCoroutine (switchPlace (Place.Hell));
+		}
+	}
+
+	/// <summary>
+	/// Switchs the place.
+	/// </summary>
+	/// <returns>The place.</returns>
+	/// <param name="place">Place.</param>
+	private IEnumerator switchPlace(Place place) {
+		yield return new WaitForSeconds (SwitchPlaceDelay);
+
+		switch (place) {
+			case Place.Heaven:
+				// Flip heaven to hell
+				HeavenGroup.SetActive(false);
+				HeavenToHellGroup.SetActive (true);
+				break;
+			case Place.Hell:
+				// Flip hell to heaven.
+				HellGroup.SetActive (false);
+				HeavenToHellGroup.SetActive (true);
+				break;
 		}
 	}
 }
