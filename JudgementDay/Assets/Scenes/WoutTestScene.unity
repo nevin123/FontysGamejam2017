@@ -626,7 +626,7 @@ MonoBehaviour:
   - {fileID: 1839518976308318, guid: 722d96432c9bfd1458ded7f2c0b434ca, type: 2}
   - {fileID: 1259881211252428, guid: 5ec23942474c09c46b3a0e9d8bb909a4, type: 2}
   EMQ: {fileID: 0}
-  ammount: 3
+  ammount: 9
   EntityContainer: {fileID: 721203198}
   EntityList: []
 --- !u!114 &558751951
@@ -1918,6 +1918,16 @@ Prefab:
     - target: {fileID: 1028452997840958, guid: 8da4a9095afb1ea49a1a3bbee1e750ae, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212569966554620344, guid: 8da4a9095afb1ea49a1a3bbee1e750ae,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212117550606303524, guid: 8da4a9095afb1ea49a1a3bbee1e750ae,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8da4a9095afb1ea49a1a3bbee1e750ae, type: 2}

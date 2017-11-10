@@ -202,7 +202,15 @@ public class GameManager : MonoBehaviour {
 		if (GetPercentageOfPlace (Place.Hell) < placePercentageTreshold) {
 			StartCoroutine (switchPlace (Place.Hell));
 		}
+
+        Invoke("BackToTitle", 10);
 	}
+
+    private void BackToTitle()
+    {
+        Application.LoadLevel(0);
+    }
+
 
 	/// <summary>
 	/// Switchs the place.
