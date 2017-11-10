@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour {
 
     public GameObject HellSpot;
 
+	/// <summary>
+	/// The place percentage treshold.
+	/// </summary>
+	public float placePercentageTreshold;
+
     /// <summary>
     /// Manages the entities
     /// </summary>
@@ -39,6 +44,16 @@ public class GameManager : MonoBehaviour {
 
 	private List<Entity> EntitiesInHeaven = new List<Entity>();
 	private List<Entity> EntitiesInHell = new List<Entity>();
+
+	/// <summary>
+	/// The camera manager.
+	/// </summary>
+	public CameraManager CM;
+
+	/// <summary>
+	/// The st peter script.
+	/// </summary>
+	public StPeter stPeter;
 
 	/// <summary>
 	/// Start this instance.
@@ -155,5 +170,20 @@ public class GameManager : MonoBehaviour {
 		}
 
 		return (float)((suitablePeople / totalPeople) * 100.0f);
+	}
+
+	/// <summary>
+	/// Ends the game.
+	/// </summary>
+	public void EndGame() {
+		CM.ZoomTo (stPeter.transform.position.x, stPeter.transform.position.y);
+
+		if (GetPercentageOfPlace (Place.Heaven) < placePercentageTreshold) {
+			// TODO: flip heaven to hell.
+		}
+	
+		if (GetPercentageOfPlace (Place.Hell) < placePercentageTreshold) {
+			// TODO: flip hell to heaven.
+		}
 	}
 }
