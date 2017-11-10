@@ -35,7 +35,7 @@ public class Entity : MonoBehaviour {
 
 	private Transform nextPosition;
 
-	private Place CurrentPlace;
+	public Place CurrentPlace;
 
 	/// <summary>
 	/// Start this instance.
@@ -103,7 +103,7 @@ public class Entity : MonoBehaviour {
 
     public void MoveInHeavenOrHell()
     {
-        Vector2 nextLocation = new Vector2(Random.Range(-1.17f, 0.69f), 0);
+        Vector2 nextLocation = new Vector2(Random.Range(-1.14f, 0.69f), 0);
         this.GetComponent<SpriteRenderer>().flipX = !(nextLocation.x > this.transform.position.x);
         float time = 0f;
         if (isGood && CurrentPlace == Place.Heaven){

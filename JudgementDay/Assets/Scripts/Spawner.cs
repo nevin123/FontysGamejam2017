@@ -30,6 +30,7 @@ public class Spawner : MonoBehaviour {
         for (int i = 0; i < 5; i++)
         {
             Entity nextEntity = EM.GetNextEntity().GetComponent<Entity>();
+            EM.EntityList.Add(nextEntity);
             if (nextEntity != null)
             {
                 if (!wait)
