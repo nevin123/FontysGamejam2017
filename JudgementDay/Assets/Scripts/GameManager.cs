@@ -147,8 +147,6 @@ public class GameManager : MonoBehaviour {
 				break;
 		}
 
-		if (!list) return;
-
 		float totalPeople = list.Count;
 		float suitablePeople = 0;
 
