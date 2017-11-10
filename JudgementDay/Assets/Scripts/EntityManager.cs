@@ -22,6 +22,8 @@ public class EntityManager : MonoBehaviour {
 	/// </summary>
 	private Queue<GameObject> entities = new Queue<GameObject> (new GameObject[] { });
 
+    private List<Entity> EntityList = new List<Entity>();
+
 	/// <summary>
 	/// Start this instance.
 	/// </summary>
@@ -29,10 +31,20 @@ public class EntityManager : MonoBehaviour {
 		for (int i = 0; i < 10; i++) {
 			GameObject entity = (GameObject)Instantiate (AvailableEntities [Random.Range(0, this.AvailableEntities.Length)], EntityContainer);
             entity.transform.name = entity.transform.name.Split ('(') [0];
-
+            EntityList.Add(entity.GetComponent<Entity>());
 			this.entities.Enqueue(entity);
 		}
+
+        Invoke("somebodySpeak", 3);
 	}
+
+    private void somebodySpeak()
+    {
+        Entity speakingEntity = EntityList[Random.Range(0, EntityList.Count)];
+        speakingEntity.Speak("HI");
+
+        Invoke("somebodySpeak", Random.Range(5, 10));
+    }
 
 	/// <summary>
 	/// Update this instance.
