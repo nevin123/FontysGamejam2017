@@ -55,18 +55,36 @@ public class Entity : MonoBehaviour {
         else if(currentPlace == Place.Heaven)
         {
             float time = Vector2.Distance(this.transform.position, nextPosition.transform.position) / 0.3f;
-            this.transform.DOMove(nextPosition.transform.position, time);
+            this.transform.DOMove(nextPosition.transform.position, time).OnComplete(() => { MoveInHeavenOrHell(); });
         }
         else if(currentPlace == Place.Hell)
         {
             this.transform.DOShakePosition(1,0.01f,10,90).OnComplete(() => {
                 Debug.Log("complete");
                 float time = Vector2.Distance(this.transform.position, nextPosition.transform.position) / 1.5f;
-                this.transform.DOMove(nextPosition.transform.position, time);
+                this.transform.DOMove(nextPosition.transform.position, time).OnComplete(() => { MoveInHeavenOrHell(); });
             });
             
         }
         //this.transform.position = parent.transform.position;
+    }
+
+    public void MoveInHeavenOrHell()
+    {
+        Vector2 nextLocation = new Vector2(Random.Range(-1.17f, 0.69f), 0);
+        this.GetComponent<SpriteRenderer>().flipX = !(nextLocation.x > this.transform.position.x);
+        float time = 0f;
+        if (isGood && CurrentPlace == Place.Heaven){
+            time = Vector2.Distance(new Vector2(this.transform.position.x, 0), nextLocation) / 0.2f;
+        }else if(isGood && CurrentPlace == Place.Hell){
+            time = Vector2.Distance(new Vector2(this.transform.position.x, 0), nextLocation) / 0.5f;
+        }else if(!isGood && CurrentPlace == Place.Heaven){
+            time = Vector2.Distance(new Vector2(this.transform.position.x, 0), nextLocation) / 0.2f;
+        }
+        else if(!isGood && CurrentPlace == Place.Hell){
+            time = Vector2.Distance(new Vector2(this.transform.position.x, 0), nextLocation) / 0.2f;
+        }
+        this.transform.DOMoveX(nextLocation.x, time).SetEase(Ease.Linear).OnComplete(() => { MoveInHeavenOrHell(); });
     }
 
     /// <summary>
