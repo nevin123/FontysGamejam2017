@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 /// <summary>
 /// Entity.
@@ -27,7 +28,10 @@ public class Entity : MonoBehaviour {
 	/// <summary>
 	/// The text.
 	/// </summary>
-	public TextMesh QuoteText;
+	public Canvas Canvas;
+    public Text QuoteText;
+    public Image BalloonImage;
+    public Sprite[] Balloons;
 
 	private Transform nextPosition;
 
@@ -40,6 +44,7 @@ public class Entity : MonoBehaviour {
 
     void Awake()
     {
+        Canvas.enabled = false;
         An = GetComponent<Animator>();
         An.SetInteger("Entity", (int)Type);
         An.SetInteger("Weapon", (int)Item);
@@ -55,6 +60,18 @@ public class Entity : MonoBehaviour {
     {
     }
 
+    public void Speak(string text)
+    {
+        QuoteText.text = text;
+        Canvas.enabled = true;
+
+        Invoke("DisableText", 3);
+    }
+
+    public void DisableText()
+    {
+        Canvas.enabled = false;
+    }
 
     public void SetPosition(GameObject parent, Place currentPlace)
     {
