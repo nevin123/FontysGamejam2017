@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 /// <summary>
 /// Entity.
@@ -24,7 +25,7 @@ public class Entity : MonoBehaviour {
 
     private Transform nextPosition;
 
-    private bool Move;
+    private Place CurrentPlace;
 
 	/// <summary>
 	/// Start this instance.
@@ -38,18 +39,33 @@ public class Entity : MonoBehaviour {
 
     void FixedUpdate()
     {
-        if (Move == true)
-        {
-            this.transform.position = Vector2.Lerp(this.transform.position, nextPosition.transform.position, Time.deltaTime);
-        }
     }
 
 
-    public void SetPosition(GameObject parent)
+    public void SetPosition(GameObject parent, Place currentPlace)
     {
-        Move = true;
         this.transform.SetParent(parent.transform);
         nextPosition = parent.transform;
+        CurrentPlace = currentPlace;
+        if (currentPlace == Place.Purgatory)
+        {
+            float time = Vector2.Distance(this.transform.position, nextPosition.transform.position) / 0.5f;
+            this.transform.DOMove(nextPosition.transform.position, time);
+        }
+        else if(currentPlace == Place.Heaven)
+        {
+            float time = Vector2.Distance(this.transform.position, nextPosition.transform.position) / 0.3f;
+            this.transform.DOMove(nextPosition.transform.position, time);
+        }
+        else if(currentPlace == Place.Hell)
+        {
+            this.transform.DOShakePosition(1,0.01f,10,90).OnComplete(() => {
+                Debug.Log("complete");
+                float time = Vector2.Distance(this.transform.position, nextPosition.transform.position) / 1.5f;
+                this.transform.DOMove(nextPosition.transform.position, time);
+            });
+            
+        }
         //this.transform.position = parent.transform.position;
     }
 

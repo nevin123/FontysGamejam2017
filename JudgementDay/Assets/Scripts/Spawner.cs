@@ -34,7 +34,7 @@ public class Spawner : MonoBehaviour {
             {
                 if (!wait)
                 {
-                    nextEntity.SetPosition(Spots[i]);
+                    nextEntity.SetPosition(Spots[i], Place.Purgatory);
                     yield return new WaitForSeconds(0.5f);
                 }
             }

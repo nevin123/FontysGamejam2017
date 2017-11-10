@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour {
         Entity JudgementPlace = spawner.Spots[0].GetComponentInChildren<Entity>();
         if (JudgementPlace != null)
         {
-            JudgementPlace.SetPosition(spawner.JudgementSpot);
+            JudgementPlace.SetPosition(spawner.JudgementSpot, Place.Purgatory);
         }
         StartCoroutine("WaitForUpdate");
     }
@@ -76,10 +76,10 @@ public class GameManager : MonoBehaviour {
 		if (nextEntity) {
 			switch (place) {
 				case Place.Heaven:
-                    nextEntity.SetPosition(HeavenSpot);
+                    nextEntity.SetPosition(HeavenSpot, Place.Heaven);
 					break;
 				case Place.Hell:
-                    nextEntity.SetPosition(HellSpot);
+                    nextEntity.SetPosition(HellSpot, Place.Hell);
 					break;
 			}
             StartCoroutine("WaitForMove");
@@ -110,14 +110,14 @@ public class GameManager : MonoBehaviour {
             Entity EntityAtSpot = spawner.Spots[i + 1].GetComponentInChildren<Entity>();
             if (EntityAtSpot != null)
             {
-                EntityAtSpot.SetPosition(spawner.Spots[i].gameObject);
+                EntityAtSpot.SetPosition(spawner.Spots[i].gameObject, Place.Purgatory);
                 yield return new WaitForSeconds(0.5f);
             }
         }
         GameObject NextEntity = EM.GetNextEntity();
         if (NextEntity != null)
         {
-            NextEntity.GetComponent<Entity>().SetPosition(spawner.Spots[4]);
+            NextEntity.GetComponent<Entity>().SetPosition(spawner.Spots[4], Place.Purgatory);
         }
         StopCoroutine("WaitBeforeWalking");
     }
